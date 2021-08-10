@@ -39,7 +39,12 @@ namespace Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate
         //https://msdn.microsoft.com/en-us/library/e78dcd75(v=vs.110).aspx 
         public IReadOnlyCollection<OrderItem> OrderItems => _orderItems.AsReadOnly();
 
-        public decimal Total()
+        public decimal Total
+		{
+            get { return this.TotalSum(); }
+		}
+
+        public decimal TotalSum()
         {
             var total = 0m;
             foreach (var item in _orderItems)
